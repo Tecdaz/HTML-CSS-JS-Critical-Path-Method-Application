@@ -479,6 +479,9 @@ addActivityBtn.addEventListener("click", function () {
 
   var actInput = document.getElementById("inputActivity");
   var timeInput = document.getElementById("inputTime");
+  if(timeInput.value == ""){
+    timeInput.value = 0;
+  }
 
   cell[0].classList.add("actNum");
   row.setAttribute("data-num", counter);
@@ -530,6 +533,7 @@ addActivityBtn.addEventListener("click", function () {
       cell[3].textContent = "";
       row.setAttribute("data-pred", "");
     }
+
   }
 
   var li = document.createElement("li");
@@ -551,8 +555,22 @@ addActivityBtn.addEventListener("click", function () {
   table.appendChild(row);
 
   //dodanie utworzonego tutaj obiektu Activity do globalnej ActivityList
-
+  actInput.value = "";
+  timeInput.value = "";
+  var checkboxes = document.querySelectorAll(
+    'input[name="actSelected"]:checked'
+  );
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  })
   counter++;
+  var eventoEscape = new KeyboardEvent('keydown', {
+    key: 'Escape',
+    keyCode: 27
+  });
+  
+  // Despachar el evento en el documento
+  document.dispatchEvent(eventoEscape);
 });
 
 removeActivityBtn.addEventListener("click", function () {
@@ -567,7 +585,7 @@ removeActivityBtn.addEventListener("click", function () {
 
 calculateBtn.addEventListener("click", function () {
   if (table.rows.length > 0) {
-    resultDiv.style.height = "100px";
+    resultDiv.style.height = "fit-content";
     resultDiv.style.opacity = "100%";
     resultDiv.style.transition = "height .5s, opacity 1s";
 
@@ -592,8 +610,8 @@ calculateBtn.addEventListener("click", function () {
       }
     }
 
-    var info1 = `Critical path: ${result}`;
-    var info2 = `Critical path duration: ${finalDuration}`;
+    var info1 = `Camino critico: ${result}`;
+    var info2 = `Duracion del camino critico: ${finalDuration}`;
     resultText1.textContent = info1;
     resultText2.textContent = info2;
     finalDuration = 0;

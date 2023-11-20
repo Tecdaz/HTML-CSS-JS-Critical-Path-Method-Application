@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>CPM</title>
 </head>
 <body>
 
@@ -26,9 +26,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Activity</th>
-                            <th scope="col">Time requirement</th>
-                            <th scope="col">Predecessors</th>
+                            <th scope="col">Actividad</th>
+                            <th scope="col">Tiempo requerido</th>
+                            <th scope="col">Predecesores</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -39,9 +39,9 @@
         
         <div class="container py-3">
             <div class="buttons row">
-                <button type="button" id="newActivityBtn" class="btn btn-primary col one" data-bs-toggle="modal" data-bs-target="#newActivityModal">New activity</button>
-                <button type="button" id="removeActivityBtn" class="btn btn-secondary col two">Remove activity</button>
-                <button type="button" id="calculateBtn" class="btn btn-outline-primary col three">Calculate</button>
+                <button type="button" id="newActivityBtn" class="btn btn-primary col one" data-bs-toggle="modal" data-bs-target="#newActivityModal">Nueva Actividad</button>
+                <button type="button" id="removeActivityBtn" class="btn btn-secondary col two">Remover Actividad</button>
+                <button type="button" id="calculateBtn" class="btn btn-outline-primary col three">Calcular</button>
             </div>
         </div>
 
@@ -51,7 +51,6 @@
                 <p id="resultText2"></p>
             </div>
         </div>
-        
         <div class="container py-3">
             <div class="graph">
                 <div class="border-left"></div>
@@ -60,18 +59,19 @@
                 <div class="border-bottom"></div>
             </div>
         </div>
+        
 
         <div class="container py-4">
             <div class="tables-result">
                 <table id="resultTable" class="table">
                     <thead>
                         <tr>
-                            <th>Activity</th>
-                            <th>Duration</th>
-                            <th>Early start time</th>
-                            <th>Early End time</th>
-                            <th>Late start time</th>
-                            <th>Late End time</th>
+                            <th>Actividad</th>
+                            <th>Duracion</th>
+                            <th>Inicio temprano</th>
+                            <th>Fin temprano</th>
+                            <th>Inicio tardio</th>
+                            <th>Fin tardio</th>
                         </tr>
                     </thead>
                     <tbody id="resultBody">
@@ -82,9 +82,9 @@
         </div>
         <div class="container py-4">
             <div class="about">
-                <h2>About</h2>
+                <h2>Acerca de CPM</h2>
                 <div class="underline mb-4"></div>
-                <p>The critical path method (CPM), or critical path analysis (CPA), is an algorithm for scheduling a set of project activities. It is commonly used in conjunction with the program evaluation and review technique (PERT). A critical path is determined by identifying the longest stretch of dependent activities and measuring the time required to complete them from start to finish.</p>
+                <p>El CPM se centra en identificar el camino más largo de un proyecto, conocido como la "ruta crítica", que determina la duración total del proyecto. Este camino crítico está compuesto por una secuencia de actividades que no pueden retrasarse sin impactar la duración total del proyecto. En otras palabras, cualquier retraso en las actividades del camino crítico afectará directamente la fecha de finalización del proyecto.</p>
             </div>
         </div>
 
@@ -92,33 +92,33 @@
             <div class="modal-dialog modal-xl modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">New activity</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Nueva actividad</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form class="row needs-validation">
                         <div class="col-md-4">
-                            <label for="inputActivity" class="form-label">Activity</label>
+                            <label for="inputActivity" class="form-label">Actividad</label>
                             <input type="text" class="form-control" id="inputActivity" maxlength="40">
                             <div class="invalid-feedback">
-                                Please provide activity name.
+                                Intoduce el nombre de la actividad
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="inputTime" class="form-label">Time requirement</label>
+                            <label for="inputTime" class="form-label">Tiempo requerido</label>
                             <input type="number" class="form-control" id="inputTime" min="0" required>
                             <div class="invalid-feedback">
-                                Please provide time requirement.
+                                Ingresa el tiempo requerido
                             </div>
                         </div>
                         
                         <div class="col-md-4">
 
 
-                            <label class="form-label">Preceding activity</label>
+                            <label class="form-label">Actividades predecesoras</label>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Select activities...
+                                  Seleccionar actividades...
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="actList">
                                   <!-- <li >
@@ -135,7 +135,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="addActivityBtn">Add</button>
+                    <button type="submit" class="btn btn-primary" id="addActivityBtn">Agregar</button>
                 </div>
               </div>
             </div>
